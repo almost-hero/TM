@@ -1,0 +1,18 @@
+{% extends 'accounts/accounts_main.html' %}
+{% block title %}
+  Log in page
+{% endblock %}
+
+{% block content %}
+  <p class="sign" align="center">Log in</p>
+  <form class="form1" method="post" action="{% url 'login_url' %}">
+    {% csrf_token %}
+    {% if form.errors %}
+    <div class="alert alert-danger" role="alert">
+      <span>Username or password is incorrect</span>
+    </div>
+    {% endif %}
+    {{form.username}}
+    {{form.password}}
+    <button type="submit" name="button" class="submit" align="center">Log in</button>
+{% endblock %}

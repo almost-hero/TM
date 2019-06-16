@@ -1,0 +1,31 @@
+{% extends 'taskmain/base_task.html' %}
+
+{% block title %}
+  Projects Page
+{% endblock %}
+{% block head %}
+  Your Projects
+{% endblock %}
+
+{% block content %}
+<div class="list-group">
+  {% if us%}
+    {% if projects %}
+      {% for project in projects %}
+        <a href="{% url 'project_detail_url' slug=project.slug %}" class="list-group-item list-group-item-action">{{project}}</a>
+      {% endfor %}
+    {% else %}
+      <span>You haven't any projects</span>
+    {% endif %}
+
+
+  {% else %}
+    <span>Please <a href="{% url 'login_url' %}?next={{request.path}}">log in</a> or
+      <a href="{% url 'password_change_url' %}?next={{request.path}}">sign up</a>
+      if you want to manage your project with TM
+    </span>
+  {% endif %}
+
+
+</div>
+{% endblock %}

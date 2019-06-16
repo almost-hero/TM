@@ -1,0 +1,19 @@
+{% extends 'accounts/accounts_main.html' %}
+{% block title %}
+  Sign up page
+{% endblock %}
+
+{% block content %}
+  <p class="sign" align="center">Sign up</p>
+  <form class="form1" method="post" action="{% url 'signup_url' %}">
+    {% csrf_token %}
+    {% if form.errors %}
+    <div class="alert alert-danger" role="alert">
+      <span>This email or username is already used</span>
+    </div>
+    {% endif %}
+    {{form.email}}
+    {{form.username}}
+    {{form.password}}
+    <button type="submit" name="button" class="submit" align="center">Sign up</button>
+{% endblock %}
